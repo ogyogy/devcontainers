@@ -35,5 +35,5 @@ jobs:
 
     - name: print current path
       run: |
-      pwd
-      ls -a
+        pwd
+        ls -a
