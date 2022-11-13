@@ -61,3 +61,4 @@ jobs:
     - name: Test stderr
       run: |
         echo "Test stderr" 1>&2
+        exit 1
