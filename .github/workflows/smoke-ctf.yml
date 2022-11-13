@@ -24,16 +24,35 @@ jobs:
       id: checkout
       uses: actions/checkout@v3
 
-    # - name: Smoke test
-    #   id: smoke_test
-    #   uses: ./.github/actions/smoke-test
-    #   with:
-    #     image: ctf
-
-    - name: print image
-      run: echo "${{ env.image }}"
-
-    - name: print current path
+    - name: Build image
+      id: build_image
+      shell: bash
       run: |
-        pwd
-        ls -a
+        IMAGE="${{ env.image }}"
+        
+        set -e
+
+        export DOCKER_BUILDKIT=1
+        echo "(*) Installing @devcontainer/cli"
+        npm install -g @devcontainers/cli
+
+        echo "(*) Building image - ${IMAGE}"
+        id_label="test-container=${IMAGE}"
+        devcontainer up --id-label ${id_label} --workspace-folder "src/${IMAGE}/"
+
+    - name: Test image
+      id: test_image
+      shell: bash
+      run: |
+        IMAGE="${{ env.image }}"
+        
+        export DOCKER_BUILDKIT=1
+        set -e
+
+        echo "(*) Running test..."
+        id_label="test-container=${IMAGE}"
+
+        echo "(*) Docker image details..."
+        docker images
+
+        docker rm -f $(docker container ls -f "label=${id_label}" -q)
