@@ -25,9 +25,9 @@ RUN groupadd --gid $USER_GID $USERNAME \
     sudo \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME \
-    && pip install --upgrade pip \
-    && pip install --no-cache-dir \
-    autopep8 flake8
+    && pip3 install --no-cache-dir \
+    autopep8 \
+    flake8
 
 # ********************************************************
 # * Anything else you want to do like clean up goes here *
