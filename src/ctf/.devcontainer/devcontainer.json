@@ -27,6 +27,7 @@
 				"editor.formatOnSave": true,
 				"editor.formatOnType": true,
 				"python.linting.flake8Enabled": true,
+				"terminal.integrated.defaultProfile.linux": "bash",
 				"[python]": {
 					"editor.codeActionsOnSave": {
 						"source.organizeImports": true

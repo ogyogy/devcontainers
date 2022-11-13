@@ -1,0 +1,59 @@
+name: Smoke test "ctf" build
+
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+  pull_request:
+    paths:
+      - src/ctf/**
+      - .github/workflows/smoke-ctf.yaml
+
+env:
+  image: ctf
+
+jobs:
+  smoke-test:
+    name: Smoke test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      id: checkout
+      uses: actions/checkout@v3
+
+    - name: Build image
+      id: build_image
+      shell: bash
+      run: |
+        IMAGE="${{ env.image }}"
+        
+        export DOCKER_BUILDKIT=1
+        set -e
+
+        echo "(*) Installing @devcontainer/cli"
+        npm install -g @devcontainers/cli
+
+        echo "(*) Building image - ${IMAGE}"
+        id_label="test-container=${IMAGE}"
+        devcontainer up --id-label ${id_label} --workspace-folder "src/${IMAGE}/"
+
+    - name: Test image
+      id: test_image
+      shell: bash
+      run: |
+        IMAGE="${{ env.image }}"
+        
+        export DOCKER_BUILDKIT=1
+        set -e
+
+        # Run actual test
+        echo "(*) Running test..."
+        id_label="test-container=${IMAGE}"
+        devcontainer exec --workspace-folder $(pwd)/src/$IMAGE --id-label ${id_label} /bin/sh -c 'set -e && if [ -f "test-project/test.sh" ]; then cd test-project && if [ "$(id -u)" = "0" ]; then chmod +x test.sh; else sudo chmod +x test.sh; fi && ./test.sh; else ls -a; fi'
+
+        echo "(*) Docker image details..."
+        docker images
+
+        # Clean up
+        docker rm -f $(docker container ls -f "label=${id_label}" -q)
