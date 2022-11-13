@@ -33,5 +33,7 @@ jobs:
     - name: print image
       run: echo "${{ env.image }}"
 
-    - name: print action path
-      run: echo "${{ github.action_path }}"
+    - name: print current path
+      run: |
+      pwd
+      ls -a
