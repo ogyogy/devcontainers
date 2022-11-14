@@ -10,6 +10,10 @@
 
 ```
 .
+├── .github
+│   └── workflows
+│       ├── smoke-ctf.yml
+│       └── ...
 ├── LICENSE
 ├── README.md
 └── src
@@ -17,10 +21,14 @@
     │   ├── .devcontainer
     │   │   ├── Dockerfile
     │   │   └── devcontainer.json
-    │   └── README.md
+    │   ├── README.md
+    │   └── test-project
+    │       ├── test-utils.sh
+    │       └── test.sh
     └── ...
 ```
 
+- [`.github`](.github) - GitHub Actions ワークフローの定義が含まれています。
 - [`src`](src) - 各サブディレクトリには、開発用コンテナの定義が含まれています。
 
 ## References
