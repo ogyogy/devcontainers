@@ -10,18 +10,15 @@ source test-utils.sh vscode
 
 # checkExtension "<Extension ID goes here>"
 # check "<label>" command goes here
+check "autopep8" which autopep8
+check "flake8" which flake8
 # checkOSPackages  "<label>" package list goes here
+PACKAGE_LIST="exiftool \
+    ftp \
+    gdb \
+    lib32z1"
+checkOSPackages "added-os-packeages" ${PACKAGE_LIST}
 # checkMultiple "<label>" condition1 condition2
-check "curl" which curl
-check "exiftool" which exiftool
-check "file" which file
-check "ftp" which ftp
-check "g++" which g++
-check "gcc" which gcc
-check "gdb" which gdb
-check "make" which make
-check "pip3" which pip3
-check "python3" which python3
 
 # Report result
 reportResults
