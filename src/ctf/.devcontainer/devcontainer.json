@@ -1,5 +1,5 @@
 {
-	"name": "CTF",
+	"name": "Capture The Flag",
 	"build": {
 		"dockerfile": "Dockerfile"
 	},
@@ -26,6 +26,7 @@
 				"editor.formatOnPaste": true,
 				"editor.formatOnSave": true,
 				"editor.formatOnType": true,
+				"python.linting.pylintEnabled": false,
 				"python.linting.flake8Enabled": true,
 				"terminal.integrated.defaultProfile.linux": "bash",
 				"[python]": {
