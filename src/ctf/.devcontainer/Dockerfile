@@ -16,6 +16,10 @@ RUN groupadd --gid $USER_GID $USERNAME \
     ftp \
     gdb \
     lib32z1 \
+    sudo \
+    # Add sudo support
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME \
     # Install Python packages
     && pip3 install --no-cache-dir \
     autopep8 \
