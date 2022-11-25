@@ -8,4 +8,4 @@ Development container images.
 
 ## License
 
-[MIT](https://github.com/ogyogy/devcontainers/blob/main/LICENSE).
+[MIT](https://github.com/ogyogy/devcontainers/blob/main/LICENSE)
