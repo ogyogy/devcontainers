@@ -1,0 +1,38 @@
+{
+	// https://containers.dev/implementors/json_reference/
+	// A name for the dev container displayed in the UI.
+	"name": "Python 3 & awslocal",
+	"build": {
+		// Required when using a Dockerfile.
+		"dockerfile": "Dockerfile"
+	},
+	// An array of Docker CLI arguments that should be used when running the container.
+	"runArgs": [
+		"--add-host=host.docker.internal:host-gateway"
+	],
+	// A set of name-value pairs that sets or overrides environment variables for the container.
+	"containerEnv": {
+		"LOCALSTACK_HOST": "host.docker.internal"
+	},
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python"
+			],
+			"settings": {
+				"editor.formatOnPaste": true,
+				"editor.formatOnSave": true,
+				"editor.formatOnType": true,
+				"python.linting.pylintEnabled": false,
+				"python.linting.flake8Enabled": true,
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"[python]": {
+					"editor.codeActionsOnSave": {
+						"source.organizeImports": true
+					}
+				}
+			}
+		}
+	}
+}
