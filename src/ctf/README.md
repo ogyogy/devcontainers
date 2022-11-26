@@ -9,7 +9,7 @@ CTF 用の Debian 環境。
 | Metadata                    | Value                 |
 | --------------------------- | --------------------- |
 | _Categories_                | Community, Other      |
-| _Definition type_           | Image                 |
+| _Definition type_           | Dockerfile            |
 | _Works in Codespaces_       | No                    |
 | _Container host OS support_ | Linux, macOS, Windows |
 | _Container OS_              | Debian                |
