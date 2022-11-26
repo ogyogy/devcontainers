@@ -1,10 +1,11 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	// https://containers.dev/implementors/json_reference/
-	// A name for the dev container displayed in the UI.
 	"name": "Python 3 & awslocal",
-	"build": {
-		// Required when using a Dockerfile.
-		"dockerfile": "Dockerfile"
+	"image": "mcr.microsoft.com/devcontainers/python:3.9",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/aws-cli:1": {}
 	},
 	// An array of Docker CLI arguments that should be used when running the container.
 	"runArgs": [
@@ -14,25 +15,12 @@
 	"containerEnv": {
 		"LOCALSTACK_HOST": "host.docker.internal"
 	},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "pip3 install --user awscli-local"
 	// Configure tool-specific properties.
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"ms-python.python"
-			],
-			"settings": {
-				"editor.formatOnPaste": true,
-				"editor.formatOnSave": true,
-				"editor.formatOnType": true,
-				"python.linting.pylintEnabled": false,
-				"python.linting.flake8Enabled": true,
-				"terminal.integrated.defaultProfile.linux": "bash",
-				"[python]": {
-					"editor.codeActionsOnSave": {
-						"source.organizeImports": true
-					}
-				}
-			}
-		}
-	}
+	// "customizations": {},
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
 }
