@@ -11,18 +11,22 @@ RUN groupadd --gid $USER_GID $USERNAME \
     # [Optional] Add sudo support. Omit if you don't need to install software after connecting.
     && apt-get update \
     && apt-get install -y sudo \
-    exiftool \
-    ftp \
-    gdb \
-    lib32z1 \
+    bash-completion \
+    zip \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME \
     && chsh -s $(which bash) $USERNAME \
     #
+    # Install AWS CLI v2
+    && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+    && unzip awscliv2.zip \
+    && sudo ./aws/install \
+    #
     # Install Python packages
     && pip install --no-cache-dir \
     autopep8 \
-    flake8
+    flake8 \
+    awscli-local
 
 # ********************************************************
 # * Anything else you want to do like clean up goes here *

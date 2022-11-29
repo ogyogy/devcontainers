@@ -2,11 +2,11 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
 	"name": "Python 3 & awslocal",
-	"image": "mcr.microsoft.com/devcontainers/python:3.9",
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	"features": {
-		"ghcr.io/devcontainers/features/aws-cli:1": {}
+	"build": {
+		"dockerfile": "Dockerfile"
 	},
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
 	// An array of Docker CLI arguments that should be used when running the container.
 	"runArgs": [
 		"--add-host=host.docker.internal:host-gateway"
@@ -18,10 +18,13 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip3 install --user awscli-local",
+	// "postCreateCommand": "pip3 install --user -r requirements.txt",
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
+			"extensions": [
+				"ms-python.python"
+			],
 			"settings": {
 				"editor.formatOnPaste": true,
 				"editor.formatOnSave": true,
