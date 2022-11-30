@@ -30,6 +30,7 @@
 				"editor.formatOnType": true,
 				"python.linting.pylintEnabled": false,
 				"python.linting.flake8Enabled": true,
+				"terminal.integrated.defaultProfile.linux": "zsh",
 				"[python]": {
 					"editor.codeActionsOnSave": {
 						"source.organizeImports": true
