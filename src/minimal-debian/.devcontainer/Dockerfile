@@ -1,5 +1,7 @@
 FROM debian:bullseye
 
+ENV LANG C.UTF-8
+
 ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
