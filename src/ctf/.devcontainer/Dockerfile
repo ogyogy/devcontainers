@@ -15,9 +15,9 @@ RUN groupadd --gid $USER_GID $USERNAME \
     ftp \
     gdb \
     lib32z1 \
+    zsh \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME \
-    && chsh -s $(which bash) $USERNAME \
     #
     # Install Python packages
     && pip install --no-cache-dir \
