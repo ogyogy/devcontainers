@@ -13,9 +13,9 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && apt-get install -y sudo \
     bash-completion \
     zip \
+    zsh \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME \
-    && chsh -s $(which bash) $USERNAME \
     #
     # Install AWS CLI v2
     && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
